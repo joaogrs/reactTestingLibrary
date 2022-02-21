@@ -18,11 +18,11 @@ describe('Teste o componente Pokemon', () => {
       customHistory.push('pokemons/151');
 
       const name = screen.getByTestId('pokemon-name');
-      expect(name).toBeInTheDocument();
+      expect(name).toHaveTextContent(/Mew/i);
       const type = screen.getByTestId('pokemon-type');
-      expect(type).toBeInTheDocument();
+      expect(type).toHaveTextContent(/Psychic/i);
       const weigth = screen.getByTestId('pokemon-weight');
-      expect(weigth).toBeInTheDocument();
+      expect(weigth).toHaveTextContent('Average weight: 4.0 kg');
 
       const img = screen.getByAltText(/Mew Sprite/i);
       const url = 'https://cdn2.bulbagarden.net/upload/4/43/Spr_5b_151.png';
