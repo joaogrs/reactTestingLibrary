@@ -82,18 +82,19 @@ describe('Teste o componente Pokedex', () => {
     const allBtn = screen.getByText(/all/i);
     expect(allBtn).toBeInTheDocument();
 
-    const buttonNext = screen.getByText(/Próximo pokémon/i);
-    userEvent.click(buttonNext);
-    const charmander = screen.getByText(/Charmander/i);
-    expect(charmander).toBeInTheDocument();
-    userEvent.click(buttonNext);
-    const caterpie = screen.getByText(/caterpie/i);
-    expect(caterpie).toBeInTheDocument();
+    const electric = screen.getByRole('button', { name: /electric/i });
+    const nextBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
+    userEvent.click(electric);
+    expect(nextBtn).toBeDisabled();
 
-    const fire = screen.getByText(/Fire/i);
-    userEvent.click(fire);
     userEvent.click(allBtn);
-    const pikachu = screen.getByText(/pikachu/i);
+    const pokemonsName = pokemons.map((pokemon) => pokemon.name);
+    pokemonsName.forEach((pokemon) => {
+      const actuallyPoke = screen.getByText(pokemon);
+      expect(actuallyPoke).toBeInTheDocument();
+      userEvent.click(nextBtn);
+    });
+    const pikachu = screen.getByText(/Pikachu/i);
     expect(pikachu).toBeInTheDocument();
   });
 });
