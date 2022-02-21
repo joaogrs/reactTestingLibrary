@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
