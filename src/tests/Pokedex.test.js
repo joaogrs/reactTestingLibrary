@@ -61,14 +61,14 @@ describe('Teste o componente Pokedex', () => {
         .toBeInTheDocument();
     });
 
-    const fireTypeBtn = screen.getByText(/fire/i);
-    userEvent.click(fireTypeBtn);
-    const charmander = screen.getByText(/charmander/i);
-    expect(charmander).toBeInTheDocument();
-    const buttonNext = screen.getByText(/Próximo pokémon/i);
-    userEvent.click(buttonNext);
-    const rapidash = screen.getByText(/Rapidash/i);
-    expect(rapidash).toBeInTheDocument();
+    const electricTypeBtn = screen.getByRole('button', { name: /electric/i });
+    const nextBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
+    userEvent.click(electricTypeBtn);
+    expect(nextBtn).toBeDisabled();
+
+    const typeBtn = screen.getAllByTestId('pokemon-type-button');
+    typeBtn.forEach((btn, i) => expect(btn)
+      .toHaveTextContent(pokemonTypes[i]));
 
     const allBtn = screen.getByText(/all/i);
     expect(allBtn).toBeVisible();
