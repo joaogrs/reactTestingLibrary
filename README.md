@@ -26,7 +26,7 @@ Após cada um dos passos, haverá um exemplo do comando a ser digitado para faze
 
 # Habilidades
 
-Neste projeto, verificamos se voce é capaz de:
+Neste projeto, trabalhei as seguintes habilidades:
 
 * Utilizar os seletores (queries) da React-Testing-Library em testes automatizados.
 
